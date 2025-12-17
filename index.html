@@ -138,9 +138,9 @@ text-decoration:none;font-weight:bold
 <p>Loading verified profile…</p>
 </div>
 
-<!-- AUDIO -->
+<!-- AUDIO (plays once after unlock) -->
 <div class="audio-box">
-<audio autoplay loop controls>
+<audio id="bgAudio" controls>
 <source src="background-audio.mp3" type="audio/mpeg">
 </audio>
 </div>
@@ -211,22 +211,10 @@ As part of compliance and security procedures, final verification is required.
 <section>
 <h2>Other Verified Winners</h2>
 <div class="winners">
-<div class="winner-card">
-<img src="winner1.jpg">
-<strong>Mary Wanjiru</strong><br>KSh 180,000 – Nairobi
-</div>
-<div class="winner-card">
-<img src="winner2.jpg">
-<strong>David Otieno</strong><br>KSh 320,000 – Kisumu
-</div>
-<div class="winner-card">
-<img src="winner3.jpg">
-<strong>Sarah Chebet</strong><br>KSh 95,000 – Eldoret
-</div>
-<div class="winner-card">
-<img src="winner4.jpg">
-<strong>Brian Mutua</strong><br>KSh 210,000 – Machakos
-</div>
+<div class="winner-card"><img src="winner1.jpg"><strong>Mary Wanjiru</strong><br>KSh 180,000</div>
+<div class="winner-card"><img src="winner2.jpg"><strong>David Otieno</strong><br>KSh 320,000</div>
+<div class="winner-card"><img src="winner3.jpg"><strong>Sarah Chebet</strong><br>KSh 95,000</div>
+<div class="winner-card"><img src="winner4.jpg"><strong>Brian Mutua</strong><br>KSh 210,000</div>
 </div>
 </section>
 
@@ -243,8 +231,15 @@ function unlock(){
 if(code.value==="JAMES"){
 lockScreen.style.display="none";
 splash.style.display="flex";
+
+const audio=document.getElementById("bgAudio");
+audio.currentTime=0;
+audio.play();
+
 setTimeout(()=>splash.style.display="none",1000);
-}else{err.textContent="Invalid security code"}
+}else{
+err.textContent="Invalid security code";
+}
 }
 
 /* CLOCK */
