@@ -41,6 +41,23 @@ header img {
     font-weight: bold;
 }
 
+/* LIVE STATUS */
+.live-status {
+    background: #ecfdf5;
+    border-left: 6px solid #22c55e;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-top: 15px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: .6; }
+    100% { opacity: 1; }
+}
+
 /* SECTIONS */
 section {
     max-width: 950px;
@@ -79,7 +96,7 @@ h2 {
     border-radius: 10px;
 }
 
-/* STATUS BAR */
+/* PROGRESS */
 .progress {
     background: #e5e7eb;
     border-radius: 20px;
@@ -123,7 +140,6 @@ h2 {
     border: 1px solid #ddd;
 }
 
-/* ID MASK */
 .mask {
     position: absolute;
     bottom: 15px;
@@ -177,6 +193,16 @@ h2 {
     font-weight: bold;
 }
 
+/* AUDIO */
+.audio-box {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    background: #111;
+    padding: 8px;
+    border-radius: 50px;
+}
+
 /* FOOTER */
 footer {
     background: #e5e7eb;
@@ -189,11 +215,22 @@ footer {
 
 <body>
 
+<!-- BACKGROUND AUDIO -->
+<div class="audio-box">
+<audio autoplay loop controls>
+    <source src="background-audio.mp3" type="audio/mpeg">
+</audio>
+</div>
+
 <header>
     <img src="james-standing.jpg">
     <h1>James Mwangi 🇰🇪</h1>
     <p>Kenya | Elite Verified Winner</p>
     <div class="badge">🏆 ELITE VERIFIED</div>
+
+    <div class="live-status" id="liveStatus">
+        🔴 Live Status: Initializing system verification...
+    </div>
 </header>
 
 <section>
@@ -226,9 +263,7 @@ footer {
             <div class="progress-bar"></div>
         </div>
 
-        <p>
-            Status: <strong>Final Verification Stage</strong>
-        </p>
+        <p>Status: <strong>Final Verification Stage</strong></p>
     </div>
 </section>
 
@@ -239,16 +274,11 @@ footer {
             As part of standard compliance and security procedures,
             a final system verification step is required before funds release.
         </p>
-
         <p>
-            <strong>Important:</strong><br>
-            No payment instructions, recipient details, or amounts
-            are displayed or collected on this website.
+            <strong>Important:</strong> No payment details are displayed or collected on this website.
         </p>
-
         <p>
-            Any official coordination related to verification is handled
-            privately through authorized channels only.
+            Any official coordination is handled privately through authorized channels only.
         </p>
     </div>
 </section>
@@ -310,6 +340,20 @@ function openModal(src) {
     document.getElementById("modalImg").src = src;
     document.getElementById("modal").style.display = "flex";
 }
+
+/* LIVE STATUS UPDATES */
+const statuses = [
+    "🔴 Live Status: Verifying identity records...",
+    "🟡 Live Status: Processing compliance checks...",
+    "🟢 Live Status: Verification almost complete...",
+    "🔵 Live Status: Awaiting final system confirmation..."
+];
+
+let index = 0;
+setInterval(() => {
+    document.getElementById("liveStatus").textContent = statuses[index];
+    index = (index + 1) % statuses.length;
+}, 5000);
 </script>
 
 </body>
