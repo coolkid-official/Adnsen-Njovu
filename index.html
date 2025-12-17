@@ -1,144 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>James Mwangi – Winner</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>James Mwangi – Verified Winner</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f4f6f8;
-            color: #333;
-        }
+<style>
+* { box-sizing: border-box; }
 
-        header {
-            background: linear-gradient(135deg, #1f2933, #111827);
-            color: #fff;
-            padding: 40px 20px;
-            text-align: center;
-        }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f6f8;
+    color: #333;
+}
 
-        header h1 {
-            margin-bottom: 10px;
-        }
+/* HEADER / HERO */
+header {
+    background: linear-gradient(135deg, #0f172a, #1f2933);
+    color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+}
 
-        section {
-            max-width: 900px;
-            margin: 30px auto;
-            background: #fff;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-        }
+header img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #22c55e;
+    margin-bottom: 15px;
+}
 
-        h2 {
-            margin-top: 0;
-            border-bottom: 2px solid #e5e7eb;
-            padding-bottom: 8px;
-        }
+.badge {
+    display: inline-block;
+    background: #22c55e;
+    color: #022c22;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+}
 
-        .highlight {
-            color: #0a7c2f;
-            font-weight: bold;
-            font-size: 18px;
-        }
+/* SECTIONS */
+section {
+    max-width: 900px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
 
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
+h2 {
+    margin-top: 0;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 8px;
+}
 
-        .image-card {
-            text-align: center;
-        }
+.highlight {
+    color: #15803d;
+    font-weight: bold;
+    font-size: 18px;
+}
 
-        .image-card img {
-            width: 100%;
-            max-height: 280px;
-            object-fit: cover;
-            border-radius: 8px;
-            border: 1px solid #d1d5db;
-        }
+/* STATS */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
 
-        .image-card p {
-            margin-top: 8px;
-            font-weight: bold;
-            font-size: 14px;
-        }
+.stat-card {
+    background: #ecfdf5;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    border-left: 5px solid #22c55e;
+}
 
-        .trust-badge {
-            background: #ecfdf5;
-            border-left: 5px solid #10b981;
-            padding: 15px;
-            margin-top: 20px;
-            border-radius: 6px;
-            font-size: 15px;
-        }
+.stat-card h3 {
+    margin: 0;
+    font-size: 24px;
+}
 
-        footer {
-            text-align: center;
-            padding: 15px;
-            background: #e5e7eb;
-            margin-top: 40px;
-            font-size: 14px;
-        }
-    </style>
+/* IMAGES */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.image-card {
+    text-align: center;
+}
+
+.image-card img {
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    filter: blur(6px);
+    transition: 0.3s;
+}
+
+.image-card img.show {
+    filter: blur(0);
+}
+
+.image-card p {
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+/* TRUST BOX */
+.trust {
+    background: #f0fdf4;
+    border-left: 6px solid #22c55e;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.modal img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+}
+
+/* WHATSAPP */
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: #fff;
+    padding: 14px 18px;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #e5e7eb;
+    font-size: 14px;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <h1>Congratulations James Mwangi 🎉</h1>
-    <p>A Story of Success, Trust, and Achievement</p>
+    <img src="james-standing.jpg" alt="James Mwangi">
+    <h1>James Mwangi 🎉</h1>
+    <p>Kenyan | Verified Winner</p>
+    <div class="badge">✔ VERIFIED & AUTHENTIC</div>
 </header>
 
 <section>
     <h2>About James Mwangi</h2>
     <p>
-        James Mwangi is a proud Kenyan whose determination and perseverance led to a remarkable achievement.
-        His story is an inspiration to many, showing that dedication and effort truly pay off.
+        James Mwangi is a proud Kenyan whose discipline, patience, and consistency
+        led to a remarkable achievement that continues to inspire many.
     </p>
 </section>
 
 <section>
-    <h2>The Big Win</h2>
-    <p>
-        James Mwangi recently won a total of
-        <span class="highlight">KSh 200,000</span>.
-        This exciting win marks a significant milestone and opens new opportunities for growth and success.
-    </p>
-
-    <div class="trust-badge">
-        ✅ Verified Winner <br>
-        ✅ Real Identity Confirmed <br>
-        ✅ Transparent & Trustworthy Achievement
+    <h2>Achievement Summary</h2>
+    <div class="stats">
+        <div class="stat-card">
+            <h3>KSh 200,000</h3>
+            <p>Total Won</p>
+        </div>
+        <div class="stat-card">
+            <h3>100%</h3>
+            <p>Verified</p>
+        </div>
+        <div class="stat-card">
+            <h3>2025</h3>
+            <p>Winning Year</p>
+        </div>
     </div>
 </section>
 
 <section>
-    <h2>Identity & Verification</h2>
-    <p>
-        Below are official photos used for identity verification and transparency.
-    </p>
+    <h2>Identity Verification</h2>
+    <p>Tap an image to reveal or view full size.</p>
 
     <div class="image-grid">
         <div class="image-card">
-            <img src="james-id-front.jpg" alt="James Mwangi ID Front">
+            <img src="james-id-front.jpg" onclick="toggleImage(this)">
             <p>National ID – Front</p>
         </div>
 
         <div class="image-card">
-            <img src="james-id-back.jpg" alt="James Mwangi ID Back">
+            <img src="james-id-back.jpg" onclick="toggleImage(this)">
             <p>National ID – Back</p>
-        </div>
-
-        <div class="image-card">
-            <img src="james-standing.jpg" alt="James Mwangi Standing">
-            <p>James Mwangi – Full Photo</p>
         </div>
     </div>
 </section>
@@ -146,14 +220,44 @@
 <section>
     <h2>Message of Inspiration</h2>
     <p>
-        James’ achievement reminds us that consistency, hope, and hard work can lead to great rewards.
-        His journey continues to motivate others to pursue their goals with confidence and discipline.
+        James’ journey proves that success rewards those who stay focused,
+        disciplined, and hopeful. Let his story motivate you.
     </p>
+
+    <div class="trust">
+        ✅ Real person<br>
+        ✅ Real documents<br>
+        ✅ Transparent success story
+    </div>
 </section>
 
 <footer>
-    © 2025 | James Mwangi Achievement Website | Hosted on GitHub Pages
+    © 2025 | James Mwangi Achievement Website | GitHub Pages
 </footer>
+
+<a class="whatsapp" href="https://wa.me/254711949099" target="_blank">
+    WhatsApp James
+</a>
+
+<div class="modal" id="modal" onclick="closeModal()">
+    <img id="modalImg">
+</div>
+
+<script>
+function toggleImage(img) {
+    img.classList.toggle("show");
+    openModal(img.src);
+}
+
+function openModal(src) {
+    document.getElementById("modalImg").src = src;
+    document.getElementById("modal").style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("modal").style.display = "none";
+}
+</script>
 
 </body>
 </html>
