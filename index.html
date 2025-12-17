@@ -15,31 +15,71 @@ body {
     color: #333;
 }
 
-/* SPLASH SCREEN */
-#splash {
+/* SECURITY LOCK */
+#lockScreen {
     position: fixed;
     inset: 0;
     background: linear-gradient(135deg,#020617,#0f172a);
     color: #fff;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    z-index: 10000;
+}
+
+.lock-box {
+    background: #020617;
+    padding: 30px;
+    border-radius: 14px;
+    text-align: center;
+    width: 90%;
+    max-width: 360px;
+    box-shadow: 0 0 30px rgba(0,0,0,.7);
+}
+
+.lock-box input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
+
+.lock-box button {
+    margin-top: 12px;
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    border: none;
+    background: gold;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* SPLASH */
+#splash {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg,#020617,#0f172a);
+    color: #fff;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     z-index: 9999;
 }
+
 #splash img {
-    width: 160px;
-    height: 160px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     border: 4px solid gold;
-    margin-bottom: 15px;
 }
-#splash h1 { margin: 0; }
-#splash p { opacity: .8; }
 
 /* HEADER */
 header {
-    background: linear-gradient(135deg, #0f172a, #1f2933);
+    background: linear-gradient(135deg,#0f172a,#1f2933);
     color: #fff;
     padding: 50px 20px;
     text-align: center;
@@ -49,32 +89,28 @@ header img {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    object-fit: cover;
     border: 4px solid gold;
 }
 
 .badge {
-    display: inline-block;
-    margin-top: 10px;
     background: gold;
     color: #111;
     padding: 6px 16px;
     border-radius: 20px;
+    display: inline-block;
+    margin-top: 10px;
     font-weight: bold;
 }
 
-/* CLOCK */
 .clock {
-    margin-top: 12px;
+    margin-top: 10px;
     background: #020617;
     color: #22c55e;
-    font-family: monospace;
     padding: 8px 12px;
     border-radius: 8px;
-    display: inline-block;
+    font-family: monospace;
 }
 
-/* LIVE STATUS */
 .live-status {
     background: #ecfdf5;
     border-left: 6px solid #22c55e;
@@ -98,19 +134,10 @@ section {
     background: #fff;
     padding: 25px;
     border-radius: 14px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,.1);
 }
 
-h2 {
-    margin-top: 0;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 8px;
-}
-
-.highlight {
-    color: #0a7c2f;
-    font-weight: bold;
-}
+h2 { border-bottom: 2px solid #eee; padding-bottom: 8px; }
 
 /* STATS */
 .stats {
@@ -127,6 +154,21 @@ h2 {
     text-align: center;
 }
 
+/* DASHBOARD */
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 15px;
+}
+
+.card {
+    background: #020617;
+    color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+
 /* PROCESS */
 .process {
     background: #fff7ed;
@@ -138,12 +180,11 @@ h2 {
 /* PROGRESS */
 .progress {
     background: #e5e7eb;
+    height: 16px;
     border-radius: 20px;
     overflow: hidden;
-    height: 16px;
     margin: 12px 0;
 }
-
 .progress-bar {
     width: 85%;
     height: 100%;
@@ -159,39 +200,14 @@ h2 {
     background: #fffbeb;
 }
 
-/* IMAGES */
-.image-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.image-card {
-    position: relative;
-    text-align: center;
-}
-
-.image-card img {
-    width: 100%;
-    border-radius: 10px;
-    cursor: pointer;
-    border: 1px solid #ddd;
-}
-
-.mask {
-    position: absolute;
-    bottom: 15px;
-    left: 10%;
-    right: 10%;
-    height: 28px;
-    background: rgba(0,0,0,0.65);
+/* PRINT */
+.print-btn {
+    padding: 12px 20px;
+    background: #111;
     color: #fff;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
 }
 
 /* LOGS */
@@ -203,31 +219,6 @@ h2 {
     border-radius: 10px;
     max-height: 200px;
     overflow-y: auto;
-}
-
-/* TRUST */
-.trust {
-    background: #f0fdf4;
-    border-left: 6px solid gold;
-    padding: 15px;
-    border-radius: 10px;
-}
-
-/* MODAL */
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.9);
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-}
-
-.modal img {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 12px;
 }
 
 /* WHATSAPP */
@@ -253,150 +244,124 @@ h2 {
     border-radius: 50px;
 }
 
-/* FOOTER */
-footer {
-    text-align: center;
-    padding: 18px;
-    background: #e5e7eb;
-    font-size: 14px;
+/* PRINT MODE */
+@media print {
+    .whatsapp,.audio-box,.live-status,.clock,.print-btn { display: none; }
 }
 </style>
 </head>
 
 <body>
 
+<!-- SECURITY -->
+<div id="lockScreen">
+    <div class="lock-box">
+        <h2>🔐 Secure Access</h2>
+        <p>Enter security code to view verified information</p>
+        <input type="password" id="codeInput" placeholder="Security Code">
+        <button onclick="unlock()">Unlock</button>
+        <p id="error" style="color:red;"></p>
+    </div>
+</div>
+
 <!-- SPLASH -->
 <div id="splash">
     <img src="james-standing.jpg">
-    <h1>James Mwangi</h1>
-    <p>Loading verified winner profile…</p>
+    <h2>James Mwangi</h2>
+    <p>Loading verified profile…</p>
 </div>
 
 <!-- AUDIO -->
 <div class="audio-box">
 <audio autoplay loop controls>
-    <source src="background-audio.mp3" type="audio/mpeg">
+<source src="background-audio.mp3" type="audio/mpeg">
 </audio>
 </div>
 
 <header>
-    <img src="james-standing.jpg">
-    <h1>James Mwangi 🇰🇪</h1>
-    <p>Kenya | Elite Verified Winner</p>
-    <div class="badge">🏆 ELITE VERIFIED</div>
-    <div class="clock" id="clock"></div>
-    <div class="live-status" id="liveStatus">
-        🔴 Live Status: Initializing system verification...
-    </div>
+<img src="james-standing.jpg">
+<h1>James Mwangi 🇰🇪</h1>
+<p>Elite Verified Winner</p>
+<div class="badge">🏆 VERIFIED</div>
+<div class="clock" id="clock"></div>
+<div class="live-status" id="liveStatus">🔴 Initializing verification…</div>
 </header>
 
 <section>
-<h2>About James Mwangi</h2>
-<p>
-James Mwangi is a proud Kenyan whose determination and consistency led to a
-remarkable achievement. His journey reflects patience, discipline, and trust
-in the verification process.
-</p>
-</section>
-
-<section>
-<h2>The Big Win</h2>
-<p>
-James Mwangi successfully secured a total winning of
-<span class="highlight">KSh 245,000</span>.
-This achievement represents a major milestone and opens new opportunities.
-</p>
+<h2>Statistics Dashboard</h2>
+<div class="dashboard">
+<div class="card">Total Won<br><strong>KSh 245,000</strong></div>
+<div class="card">Verification Level<br><strong>100%</strong></div>
+<div class="card">Status<br><strong>Active</strong></div>
+<div class="card">Year<br><strong>2025</strong></div>
+</div>
 </section>
 
 <section>
 <h2>Achievement Overview</h2>
 <div class="stats">
-    <div class="stat"><h3>KSh 245,000</h3><p>Total Won</p></div>
-    <div class="stat"><h3>100%</h3><p>Verified</p></div>
-    <div class="stat"><h3>2025</h3><p>Winning Year</p></div>
+<div class="stat"><h3>KSh 245,000</h3><p>Total Won</p></div>
+<div class="stat"><h3>Verified</h3><p>Status</p></div>
+<div class="stat"><h3>Kenya</h3><p>Country</p></div>
 </div>
 </section>
 
 <section>
 <h2>Processing Status</h2>
 <div class="process">
-<p>The winning amount is currently undergoing final system verification.</p>
+<p>Funds undergoing final system verification.</p>
 <div class="progress"><div class="progress-bar"></div></div>
-<p>Status: <strong>Final Verification Stage</strong></p>
+<p>Status: <strong>Final Stage</strong></p>
 </div>
 </section>
 
 <section>
-<h2>Official Winner Certificate</h2>
+<h2>Certificate</h2>
 <div class="certificate">
 <h3>Certificate of Achievement</h3>
-<p>This certifies that</p>
 <h2>James Mwangi</h2>
-<p>has been verified as an official winner</p>
-<p><strong>Amount:</strong> KSh 245,000</p>
+<p>Amount: <strong>KSh 245,000</strong></p>
 <p>Year: 2025</p>
+<button class="print-btn" onclick="window.print()">🖨️ Print Certificate</button>
 </div>
 </section>
 
 <section>
-<h2>Identity Verification</h2>
-<p>Click any image to view full size.</p>
-<div class="image-grid">
-    <div class="image-card">
-        <img src="james-id-front.jpg" onclick="openModal(this.src)">
-        <div class="mask">ID Details Protected</div>
-        <p>National ID – Front</p>
-    </div>
-    <div class="image-card">
-        <img src="james-id-back.jpg" onclick="openModal(this.src)">
-        <div class="mask">Sensitive Area Protected</div>
-        <p>National ID – Back</p>
-    </div>
-</div>
-</section>
-
-<section>
-<h2>System Activity Logs</h2>
+<h2>System Logs</h2>
 <div class="logs" id="logs"></div>
 </section>
 
-<section>
-<h2>Trust & Transparency</h2>
-<div class="trust">
-✅ Real Kenyan Winner<br>
-✅ Verified Identity<br>
-✅ Transparent Verification Process
-</div>
-</section>
-
-<footer>
-© 2025 | James Mwangi Achievement Website | Hosted on GitHub Pages
+<footer style="text-align:center;padding:20px;">
+© 2025 | James Mwangi | Verified Profile
 </footer>
 
 <a class="whatsapp" href="https://wa.me/254756473164" target="_blank">
 WhatsApp Contact
 </a>
 
-<div class="modal" id="modal" onclick="this.style.display='none'">
-<img id="modalImg">
-</div>
-
 <script>
-/* SPLASH */
-setTimeout(()=>{ document.getElementById("splash").style.display="none"; },1000);
+function unlock(){
+    const code=document.getElementById("codeInput").value;
+    if(code==="James7081"){
+        document.getElementById("lockScreen").style.display="none";
+        document.getElementById("splash").style.display="flex";
+        setTimeout(()=>{document.getElementById("splash").style.display="none";},1000);
+    } else {
+        document.getElementById("error").textContent="Invalid security code";
+    }
+}
 
 /* CLOCK */
 setInterval(()=>{
-document.getElementById("clock").textContent =
-"SERVER TIME: " + new Date().toLocaleString();
+document.getElementById("clock").textContent="SERVER TIME: "+new Date().toLocaleString();
 },1000);
 
 /* STATUS */
 const statuses=[
-"🔴 Live Status: Verifying identity records...",
-"🟡 Live Status: Processing compliance checks...",
-"🟢 Live Status: Verification almost complete...",
-"🔵 Live Status: Awaiting final confirmation..."
+"🔴 Verifying identity…",
+"🟡 Processing compliance…",
+"🟢 Almost complete…",
+"🔵 Awaiting confirmation…"
 ];
 let i=0;
 setInterval(()=>{
@@ -406,11 +371,10 @@ i=(i+1)%statuses.length;
 
 /* LOGS */
 const logs=[
-"Connecting to verification node...",
-"Identity hash validated",
-"Compliance layer synced",
-"Security token issued",
-"Awaiting final confirmation"
+"Connecting to system...",
+"Verification hash validated",
+"Compliance synced",
+"Security token issued"
 ];
 let l=0;
 setInterval(()=>{
@@ -419,11 +383,6 @@ box.innerHTML+="> "+logs[l]+"<br>";
 box.scrollTop=box.scrollHeight;
 l=(l+1)%logs.length;
 },4000);
-
-function openModal(src){
-document.getElementById("modalImg").src=src;
-document.getElementById("modal").style.display="flex";
-}
 </script>
 
 </body>
